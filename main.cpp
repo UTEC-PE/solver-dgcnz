@@ -23,9 +23,7 @@ int main(int argc, char const *argv[]) {
   getline(std::cin, text);
   Interpreter I(text);
 
-  I.print();
   Parser Solver(text);
-  Solver.Parse();
   Solver.visualize();
   Solver.execute();
   return EXIT_SUCCESS;

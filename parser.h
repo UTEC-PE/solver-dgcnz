@@ -127,7 +127,6 @@ class Parser {
 private:
   Node *AST;
 
-  std::vector<Token> tokenized_text;
   Token current_tkn;
   Interpreter *lexer;
 
@@ -137,18 +136,10 @@ public:
     this->current_tkn = lexer->get_next_token();
     this->AST = Parse();
   }
-  // void error();
   void eat(std::string token_type) {
 
     if (this->current_tkn.type == token_type) {
-      std::cout << "this->current_tkn.type:  " << this->current_tkn.type
-                << "  does match with token_type: " << token_type << std::endl;
       this->current_tkn = this->lexer->get_next_token();
-    } else {
-
-      std::cout << "this->current_tkn.type:  " << this->current_tkn.type
-                << "  doesn't match with token_type: " << token_type
-                << std::endl;
     }
   }
 
@@ -211,10 +202,7 @@ public:
     return node;
   }
   Node *Parse() { return this->expr(); }
-  void visualize() {
-    this->lexer->print();
-    std::cout << this->AST->getValue() << std::endl;
-  }
+  void visualize() { std::cout << this->AST->getValue() << std::endl; }
   void execute() { std::cout << this->AST->exeValue() << std::endl; }
 };
 
