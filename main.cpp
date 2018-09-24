@@ -18,7 +18,7 @@ void menu() {
 
 int main(int argc, char const *argv[]) {
   // menu();
-
+  std::cout << "Write some equation: ";
   std::string text;
   getline(std::cin, text);
   Interpreter I(text);
